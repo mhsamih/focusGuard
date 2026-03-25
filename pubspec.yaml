@@ -1,0 +1,32 @@
+name: focusguard
+description: A self-discipline screen-time manager app.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  usage_stats: ^1.2.0
+  flutter_overlay_window: ^0.3.0
+  flutter_foreground_task: ^8.0.0
+  device_policy_manager: ^1.0.0
+  shared_preferences: ^2.5.0
+  fl_chart: ^0.68.0
+  local_auth: ^2.1.0
+  provider: ^6.1.2
+  go_router: ^14.0.0
+  permission_handler: ^11.0.0
+  flutter_local_notifications: ^17.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/quotes.json
