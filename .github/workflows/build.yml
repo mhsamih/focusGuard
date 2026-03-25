@@ -1,15 +1,18 @@
 name: Build APK
 on: [push]
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true   # fixes Node.js warning
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.2          # Node.js 24 compatible
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.19.6'
+          flutter-version: '3.29.0'            # latest stable, Dart 3.7+
           channel: 'stable'
 
       - name: Install dependencies
@@ -19,7 +22,7 @@ jobs:
         run: flutter build apk --release
 
       - name: Upload APK
-        uses: actions/upload-artifact@v4        # ✅ changed from v3 → v4
+        uses: actions/upload-artifact@v4
         with:
           name: focusguard-apk
           path: build/app/outputs/flutter-apk/app-release.apk
