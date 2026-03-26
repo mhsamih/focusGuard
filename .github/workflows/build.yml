@@ -4,7 +4,6 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.2.2
@@ -22,8 +21,11 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Check Flutter version
-        run: flutter --version
+      - name: Create fresh Flutter project scaffold
+        run: |
+          flutter create --org com.focusguard --project-name focusguard /tmp/scaffold
+          cp -r /tmp/scaffold/android ./android
+          cp -r /tmp/scaffold/ios ./ios
 
       - name: Install dependencies
         run: flutter pub get
