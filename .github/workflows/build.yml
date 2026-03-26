@@ -21,11 +21,8 @@ jobs:
           channel: 'stable'
           cache: true
 
-      - name: Create fresh Flutter project scaffold
-        run: |
-          flutter create --org com.focusguard --project-name focusguard /tmp/scaffold
-          cp -r /tmp/scaffold/android ./android
-          cp -r /tmp/scaffold/ios ./ios
+      - name: Accept Android licenses
+        run: yes | flutter doctor --android-licenses || true
 
       - name: Install dependencies
         run: flutter pub get
