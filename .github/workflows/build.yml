@@ -21,6 +21,13 @@ jobs:
           channel: 'stable'
           cache: true
 
+      - name: Generate proper Flutter project scaffold
+        run: |
+          flutter create --org com.focusguard --project-name focusguard /tmp/fresh
+          rm -rf android ios
+          cp -r /tmp/fresh/android .
+          cp -r /tmp/fresh/ios .
+
       - name: Accept Android licenses
         run: yes | flutter doctor --android-licenses || true
 
